@@ -1,0 +1,154 @@
+@media  (max-width: 399px) {
+    .myOrder-border
+{
+    padding: 0.5rem 0.3rem 0.3rem 0.3rem ;
+}
+    .order-product {
+        display: block;
+        width: 100%;
+    }
+    .order-image-box {
+        width: 40%;
+        height: 7rem;
+    }
+    .order-delivery-status
+{
+   
+    justify-content: start;
+}
+    .order-product-details {
+        display: block;
+        width: 100%;
+    }
+    .details-status-date
+{
+    display: block;
+}
+    .order-delivery-status {
+        display: none;
+        width: 30%;
+    }
+}
+@media (min-width: 400px) and (max-width: 479px) {
+    .order-product {
+        display: flex;
+        width: 100%;
+    }
+    .order-image-box {
+        width: 35%;
+        height: 7rem;
+    }
+    .order-delivery-status
+{
+   
+    justify-content: start;
+}
+    .order-product-details {
+        display: block;
+        width: 65%;
+    }
+    .details-status-date
+{
+    display: block;
+}
+    .order-delivery-status {
+        display: none;
+        width: 30%;
+    }
+}
+@media (min-width: 480px) and (max-width: 599px) {
+    .order-product {
+        display: flex;
+        width: 100%;
+    }
+    .order-image-box {
+        width: 30%;
+        height: 8rem;
+    }
+    .order-delivery-status
+{
+   
+    justify-content: start;
+}
+    .order-product-details {
+        display: block;
+        width: 70%;
+    }
+    .details-status-date
+{
+    display: block;
+}
+    .order-delivery-status {
+        display: none;
+        width: 30%;
+    }
+}
+@media (min-width: 600px) and (max-width: 799px) {
+    
+    .order-product {
+        display: flex;
+        width: 100%;
+    }
+    .order-image-box {
+        width: 25%;
+        height: 8rem;
+    }
+    .order-delivery-status
+{
+   
+    justify-content: start;
+}
+    .order-product-details {
+        display: block;
+        width: 75%;
+    }
+    .details-status-date
+{
+    display: block;
+}
+    .order-delivery-status {
+        display: none;
+        width: 30%;
+    }
+}
+@media (min-width: 800px) and (max-width: 1023px) {
+    
+    .order-image-box {
+        width: 17%;
+        height: 8rem;
+    }
+    .order-product-details {
+        width: 83%;
+    }
+    .order-delivery-status {
+        width: 70%;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+    
+    .order-image-box {
+        width: 14%;
+        height: 8.5rem;
+    }
+    .order-product-details  {
+        width: 86%;
+    }
+    .order-delivery-status {
+        width: 30%;
+    }
+}
+@media (min-width: 1200px) {
+    .order-product {
+        width: 100%;
+    }
+    .order-image-box {
+        width: 12%;
+        height: 9rem;
+    }
+    .order-product-details {
+        width: 87%;
+    }
+    .order-delivery-status {
+        width: 30%;
+    }
+}

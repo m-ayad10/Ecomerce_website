@@ -1,0 +1,54 @@
+.navbar-nav
+{
+    gap: 10px;
+}
+.nav-right
+{
+    font-size: xx-large;
+    gap: 15px;
+}
+
+.loged-initial
+{
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: brown;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+.loged-initial p
+{
+    font-size: 1.3rem;
+}
+.dropdown-menu-loged
+{
+    transform: translate3d(-100px,0px,20px);
+}
+
+@media screen and (max-width: 380px) {
+    .nav-icon
+{
+    font-size: medium;
+}
+  }
+@media screen and (min-width: 381px) {
+    .nav-icon
+{
+    font-size: medium;
+}
+  }
+@media screen and (min-width: 480px) {
+    .nav-icon
+{
+    font-size: large;
+}
+  }
+  @media screen and (min-width: 700px) {
+    .nav-icon
+{
+    font-size: larger;
+}
+  }
+  
