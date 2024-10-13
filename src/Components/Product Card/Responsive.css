@@ -1,0 +1,153 @@
+@media only screen and (max-width: 400px) {
+    .productCard-border
+    {
+        padding: 1rem;
+    }
+    .productCard-container
+{
+    gap: 3%;
+}
+.productCard-box
+{
+    width: 47%;
+}
+.productCard-details
+{
+    padding: 0 0.4rem 5px 0.4rem;
+}
+.productCard-cart
+{
+    font-size: large;
+}
+.productCard-image
+{
+    height: 9rem;
+}
+}
+@media only screen and (min-width: 400px) and (max-width: 480px) {
+    .productCard-border
+    {
+        padding: 1rem;
+    }
+    .productCard-container
+{
+    gap: 2.33%;
+}
+.productCard-box
+{
+    width: 31%;
+}
+.productCard-details
+{
+    padding: 0 0.2rem 5px 0.2rem;
+}
+.productCard-cart
+{
+    font-size: large;
+}
+.productCard-image
+{
+    height: 7.5rem;
+}
+}
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+    .productCard-border
+    {
+        padding: 1rem;
+    }
+    .productCard-container
+{
+    gap: 2.33%;
+}
+.productCard-box
+{
+    width: 31%;
+}
+.productCard-details
+{
+    padding: 0 0.4rem 5px 0.4rem;
+}
+.productCard-cart
+{
+    font-size: large;
+}
+.productCard-image
+{
+    height: 9rem;
+}
+}
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+    .productCard-border
+    {
+        padding: 1.5rem;
+    }
+    .productCard-container
+{
+    gap: 2.33%;
+}
+.productCard-details
+{
+    padding: 0 0.7rem 5px 0.7rem;
+}
+.productCard-box
+{
+    width: 31%;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+.productCard-image
+{
+    height: 10.5rem;
+}
+}
+@media only screen and (min-width:800px) and (max-width: 1024px) {
+    .productCard-container
+{
+    gap: 2%;
+}
+.productCard-box
+{
+    width: 23%;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+.productCard-image
+{
+    height: 11rem;
+}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+    .productCard-container
+{
+    gap: 1%;
+}
+.productCard-box
+{
+    width: 19%;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+.productCard-image
+{
+    height: 12rem;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+    .productCard-container
+{
+    gap: 1%;
+}
+.productCard-box
+{
+    width: 19%;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+.productCard-image
+{
+    height: 14rem;
+}
+   
+}

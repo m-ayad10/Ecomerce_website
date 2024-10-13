@@ -1,0 +1,39 @@
+@media only screen and (max-width: 767px) {
+    .bottom-footer{
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 379px) {
+    .footer-text
+    {
+       font-size: xx-small;
+    }
+    .footer-icon
+    {
+       font-size: smalll;
+    }
+}
+
+@media only screen and (min-width: 380px) and (max-width: 480px) {
+    .footer-text
+   {
+      font-size: x-small;
+   }
+   .footer-icon
+   {
+      font-size: medium;
+   }
+}
+
+@media only screen and (min-width: 480px) {
+    .footer-text
+   {
+      font-size: x-small;
+   }
+   .footer-icon
+   {
+      font-size: large;
+   }
+}
+

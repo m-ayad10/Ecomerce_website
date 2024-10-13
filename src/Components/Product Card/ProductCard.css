@@ -1,0 +1,51 @@
+.productCard-border
+{
+    padding: 2rem;
+}
+.productCard-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1%;
+}
+.productCard-box
+{
+    border: 1px solid silver;
+    width: 19%;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+.productCard-image-container
+{
+    display: flex;
+    justify-content: center;
+}
+.productCard-image
+{
+    width: auto;
+    height: 14rem;
+    padding: 0 1rem 0 1rem;
+}
+.productCard-details
+{
+    padding: 0 1rem 5px 1rem;
+}
+.productCard-details p
+{
+    margin: 0;
+}
+.productCard-category
+{   
+    color: rgb(71, 71, 71);
+    font-weight: 500;
+    font-family: monospace;
+}
+.productCard-price
+{
+    font-family: fantasy;
+}
+.productCard-cart
+{
+    font-size: larger;
+}

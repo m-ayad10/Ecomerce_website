@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
 import {useNavigate} from 'react-router-dom'
 function Navbar() {
   const navigate=useNavigate()
+  const [search,setSearch]=useState(false)
+  
   return (
     <div>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -29,12 +31,12 @@ function Navbar() {
       
     </div>
     <div className="d-flex align-items-center nav-right ">
-        <p className="mb-0"><i class="fa-solid fa-heart nav-icon"></i></p>
-        <p className="mb-0 "><i className="fa-solid fa-magnifying-glass nav-icon"></i></p>
+        <p className="mb-0 navbar-hide"><i class="fa-solid fa-heart nav-icon"></i></p>
+        <p className="mb-0 " onClick={()=>setSearch(search!=true)}><i className="fa-solid fa-magnifying-glass nav-icon"></i></p>
         <p className="mb-0" onClick={()=>navigate('/cart')}><i class="fa-solid fa-cart-shopping nav-icon"></i></p>
-        <p className="mb-0  " onClick={()=>navigate('/login')}><button type='button' className='btn nav-login-btn bg-primary text-light'>Login</button></p>
+        <p className="mb-0 navbar-hide " onClick={()=>navigate('/login')}><button type='button' className='btn nav-login-btn bg-primary text-light'>Login</button></p>
         <p className="mb-0  ">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto navbar-hide">
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle d-flex align-items-center"
@@ -59,6 +61,25 @@ function Navbar() {
       </div>
   </div>
 </nav>
+{search?(
+  <div className="search-form-container">
+  <div className="search-form-box">
+    <div className="input-container">
+      <input
+        type="search"
+        className="head-search-form"
+        placeholder="Search"
+      />
+    </div>
+    <div className="icon-container d-flex align-items-center">
+      <i className="fa-solid fa-xmark" onClick={()=>setSearch(false)}></i>
+    </div>
+  </div>
+</div>
+
+):''}
+
+
 
     </div>
   )

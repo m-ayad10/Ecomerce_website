@@ -1,14 +1,17 @@
 import React from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import ProductView from '../Components/Product View/ProductView'
-import Cards from '../Components/Home Card/Cards'
+import ProductCard from '../Components/Product Card/ProductCard'
+import BottomBar from '../Components/Bottom Bar/BottomBar'
 
 function Category() {
   return (
     <div>
       <Navbar/>
       <ProductView/>
-      <Cards/>
+      <ProductCard/>
+      <BottomBar/>
+
     </div>
   )
 }

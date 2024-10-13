@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import ShoppingCart from '../Components/Shopping Cart/ShoppingCart'
+import BottomBar from '../Components/Bottom Bar/BottomBar'
 
 function Cart() {
   const product=[
@@ -51,6 +52,7 @@ function Cart() {
     <div>
       <Navbar/>
       <ShoppingCart product={product}/>
+      <BottomBar/>
     </div>
   )
 }
