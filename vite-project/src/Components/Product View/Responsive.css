@@ -1,0 +1,143 @@
+
+@media only screen and (max-width: 764px) {
+    
+}
+@media only screen and (max-width: 480px) {
+    .col-12-img
+    {
+        display: flex;
+        justify-content: center;
+    }
+    .col-12-desc
+    {
+        padding-top: 10px;
+        padding-left: 10%;
+    }    
+    .cate-image-cont
+    {
+        width: 95%;
+        height: 16rem;
+    }
+    .cate-image-box
+    {
+        right: 0%;
+        width: 95%;
+        height: 80%;
+    }
+    .img-selec-cont
+    {
+        width: 95%;
+        height: 20%;
+        right: 0%;
+    } 
+}
+@media only screen and (min-width: 481px) and (max-width: 565px) {
+    .col-12-img
+    {
+        display: flex;
+        justify-content: center;
+    }
+    .col-12-desc
+    {
+        padding-top: 10px;
+        padding-left: 10%;
+    }    
+    .cate-image-cont
+    {
+        width: 70%;
+        height: 16rem;
+    }
+    .cate-image-box
+    {
+        right: 0%;
+        width: 95%;
+        height: 80%;
+    }
+    .img-selec-cont
+    {
+        width: 95%;
+        height: 20%;
+        right: 0%;
+    } 
+}
+@media only screen and (min-width: 576px) and (max-width: 767px)  {
+   .column-desc
+   {
+    height: 19rem;
+    overflow-y: scroll;
+   }
+       
+    .cate-image-cont
+    {
+        height: 19rem;
+    }
+    .cate-image-box
+    {
+        right: 0%;
+        width: 95%;
+        height: 80%;
+    }
+    .img-selec-cont
+    {
+        width: 95%;
+        height: 20%;
+        right: 0%;
+    }     
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px)  {        
+.cate-image-cont
+{
+    height: 19rem;
+}
+.cate-image-box
+{
+    right: 0%;
+    width: 95%;
+    height: 80%;
+}
+.img-selec-cont
+{
+    width: 95%;
+    height: 20%;
+    right: 0%;
+}    
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px)  {
+       
+.cate-image-cont
+{
+    height: 20rem;
+}
+.cate-image-box
+{
+    right: 5%;
+    width: 80%;
+    height: 80%;
+}
+.img-selec-cont
+{
+    width: 80%;
+    height: 20%;
+    right: 5%;
+}
+}
+@media only screen and (min-width: 1200px) {    
+.cate-image-cont
+{
+    height: 23rem;
+}
+.cate-image-box
+{
+    top: 0;
+    right: 5%;
+    width: 70%;
+    height: 80%;
+}
+.img-selec-cont
+{
+    width: 70%;
+    height: 20%;
+    right: 5%;
+}
+}

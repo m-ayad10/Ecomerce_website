@@ -1,0 +1,39 @@
+.navbar-nav
+{
+    gap: 10px;
+}
+.nav-right
+{
+    font-size: xx-large;
+    gap: 15px;
+}
+.nav-login-btn
+{
+    
+}
+
+@media screen and (max-width: 380px) {
+    .nav-icon
+{
+    font-size: medium;
+}
+  }
+@media screen and (min-width: 381px) {
+    .nav-icon
+{
+    font-size: medium;
+}
+  }
+@media screen and (min-width: 480px) {
+    .nav-icon
+{
+    font-size: large;
+}
+  }
+  @media screen and (min-width: 700px) {
+    .nav-icon
+{
+    font-size: larger;
+}
+  }
+  

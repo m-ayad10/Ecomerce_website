@@ -1,0 +1,26 @@
+.login-font
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+form{
+    width: 100%;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: black;
+}
+.form-submit
+{
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+}
+.form-submit:hover
+{
+    color: #fff;
+}
+.register-here
+{
+    text-decoration: none;
+    color: #393f81;
+}

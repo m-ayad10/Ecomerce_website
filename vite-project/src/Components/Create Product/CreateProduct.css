@@ -1,0 +1,57 @@
+.desc-text
+{
+    width: 100%;
+}
+.createProduct-img-container
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+}
+.createProduct-img-box
+{
+    position: relative;
+    margin-bottom: 10px;
+    width: 19%;
+    height: 10rem;
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+}
+.createProduct-img-ulpoad-box
+{
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 10px;
+    width: 19%;
+    height: 10rem;
+    border-radius: 4px;
+    background-color: rgb(232 232 232 / 1 );
+    align-items: center;
+    display: flex;
+    border: 1px solid silver;
+    justify-content: center;
+}
+.createProduct-img
+{
+    max-height: 100%;
+    max-width: 100%;
+}
+.form-control-input
+{
+    display: none;
+}
+.createProduct-img-box div{
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    background-color: white;
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
