@@ -1,17 +1,16 @@
 import React from 'react'
 import Navbar from '../Components/Navbar/Navbar'
-import SignIn from '../Components/SignIn/SignIn'
+import AddAddress from '../Components/Add Address/AddAddress'
 import BottomBar from '../Components/Bottom Bar/BottomBar'
 
-function Login() {
+function Address() {
   return (
     <div>
       <Navbar/>
-      <SignIn/>
+      <AddAddress/>
       <BottomBar/>
-
     </div>
   )
 }
 
-export default Login
+export default Address

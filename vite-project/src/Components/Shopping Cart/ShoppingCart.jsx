@@ -1,8 +1,10 @@
   import React, { useState } from 'react'
   import './ShoppingCart.css'
   import './Responsive.css'
+import { useNavigate } from 'react-router-dom'
 
   function ShoppingCart({product}) {
+    const navigate=useNavigate()
     const [quantity,setQuantity]=useState()
     return (
       <div>
@@ -71,7 +73,13 @@
           }
           </div>
           
-          
+          <div className='d-flex justify-content-between me-3 mt-4'>
+          <button type="button" className="btn btn-dark san-font shadow-none" onClick={() => navigate('/')}>Continue Shopping</button>
+          <h5 className='san-font'>Total Price: 9000</h5>
+        </div>
+        <div className='d-flex justify-content-end me-3'>
+          <button type="button" className="btn btn-dark san-font shadow-none" onClick={() => navigate('/checkout')}>Proceed to Pay</button>
+        </div>
 
         </div>
       </div>

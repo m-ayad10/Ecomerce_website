@@ -1,17 +1,17 @@
 import React from 'react'
 import Navbar from '../Components/Navbar/Navbar'
-import SignIn from '../Components/SignIn/SignIn'
+import MyOrders from '../Components/My Orders/MyOrders'
 import BottomBar from '../Components/Bottom Bar/BottomBar'
 
-function Login() {
+function Orders() {
   return (
     <div>
       <Navbar/>
-      <SignIn/>
+      <MyOrders/>
       <BottomBar/>
 
     </div>
   )
 }
 
-export default Login
+export default Orders

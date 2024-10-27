@@ -1,17 +1,16 @@
 import React from 'react'
 import Navbar from '../Components/Navbar/Navbar'
-import SignIn from '../Components/SignIn/SignIn'
+import CheckoutPayment from '../Components/Checkout Payment/CheckoutPayment'
 import BottomBar from '../Components/Bottom Bar/BottomBar'
 
-function Login() {
+function Checkout() {
   return (
     <div>
       <Navbar/>
-      <SignIn/>
+      <CheckoutPayment/>
       <BottomBar/>
-
     </div>
   )
 }
 
-export default Login
+export default Checkout

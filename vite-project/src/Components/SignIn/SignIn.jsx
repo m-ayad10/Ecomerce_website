@@ -26,7 +26,7 @@ function SignIn() {
            
         </div>
         <div>
-            <h6 className='login-font mt-2 '>Don't have an account? <a href="" onClick={()=>navigate('register')}  className='register-here' >Register here</a></h6>
+            <h6 className='login-font mt-2 '>Don't have an account? <a href="" onClick={()=>navigate('/register')}  className='register-here' >Register here</a></h6>
            </div>
       </div>
     </div>

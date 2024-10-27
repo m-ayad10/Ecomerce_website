@@ -1,0 +1,33 @@
+.bottom-footer
+{
+    display: none;
+    position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   z-index: 1;
+   border-top: 2px solid rgba(255, 255, 255, 0.2);
+
+}
+
+
+.footer-column
+{
+    width: 20%;
+    text-align: center;
+}
+
+.white
+{
+    font-weight: bolder;
+}
+
+.footer-row
+{
+   display: flex;
+}
+
+.footer-text
+{
+    font-size: x-small;
+}

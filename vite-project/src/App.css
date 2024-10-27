@@ -13,3 +13,7 @@
     
     font-family:'Times New Roman', Times, serif ;
 }
+.cursor-p
+{
+  cursor: pointer;
+}

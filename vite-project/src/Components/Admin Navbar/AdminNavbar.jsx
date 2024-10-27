@@ -1,5 +1,7 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 function AdminNavbar() {
+  const navigate=useNavigate()
   return (
     <div>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -10,10 +12,10 @@ function AdminNavbar() {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav m-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Products</a>
+          <a class="nav-link active" aria-current="page" href="" onClick={()=>navigate('/admin/addProduct')}>Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  href="#">Orders</a>
+          <a class="nav-link active" aria-current="page"   href=""  onClick={()=>navigate('/admin/allOrders')}>Orders</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page"  href="#">Users </a>

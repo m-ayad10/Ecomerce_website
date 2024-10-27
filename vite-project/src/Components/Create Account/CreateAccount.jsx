@@ -39,7 +39,7 @@ function CreateAccount() {
            
         </div>
         <div>
-            <h6 className='login-font mt-2 '>Already have an account? <a href="#!" onClick={()=>navigate('login')} className='register-here' >Login here</a></h6>
+            <h6 className='login-font mt-2 '>Already have an account? <a href="" onClick={()=>navigate('/login')} className='register-here' >Login here</a></h6>
            </div>
       </div>
     </div>

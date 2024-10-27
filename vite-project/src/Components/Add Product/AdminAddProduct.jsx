@@ -1,8 +1,9 @@
 import React from 'react'
 import './AddProduct.css'
+import { useNavigate } from 'react-router-dom'
 
 function AdminAddProduct({products}) {
-  
+  const navigate=useNavigate()
 
   return (
     <div className=''>
@@ -21,7 +22,7 @@ function AdminAddProduct({products}) {
           
           
           
-          <button type="button" class="btn btn-primary san-font">+ Create New</button>
+          <button type="button" class="btn btn-primary san-font" onClick={()=>navigate('/admin/createProduct')}>+ Create New</button>
           </div>
         <hr className='addProduct-hr' />  
 
