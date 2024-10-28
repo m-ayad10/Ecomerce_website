@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function AddAddress() {
   const navigate = useNavigate();
   
-  // useState hooks for each input field
+  // useState hooks for each input fieldc
   const [fullName, setFullName] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
   const [address, setAddress] = useState('');

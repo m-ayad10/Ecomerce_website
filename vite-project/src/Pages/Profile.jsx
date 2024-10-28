@@ -10,7 +10,6 @@ function Profile() {
       <Navbar/>
       <ProfileInfo/>
       <Footer/>
-
       <BottomBar/>
     </div>
   )
