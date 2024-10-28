@@ -9,22 +9,22 @@ function Navbar() {
     <div>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><h4>Ryme.</h4></a>
+    <a class="navbar-brand" href=""><h4>Ryme.</h4></a>
     
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav m-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href='' onClick={()=>navigate('/')}>Home</a>
+          <p class="nav-link active cursor-p san-font" aria-current="page"  onClick={()=>navigate('/')}>Home</p>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  href="">Shop</a>
+          <p class="nav-link active cursor-p san-font" aria-current="page"  href="">Men</p>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  href="">Favourite </a>
+          <p class="nav-link active cursor-p san-font" aria-current="page"  href="">Women </p>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  href="">Contact</a>
+          <p class="nav-link active cursor-p san-font" aria-current="page"  href="">Contact</p>
         </li>
         
       </ul>
@@ -32,8 +32,8 @@ function Navbar() {
     </div>
     <div className="d-flex align-items-center nav-right ">
         <p className="mb-0 navbar-hide cursor-p" onClick={()=>navigate('/wishlist')} ><i class="fa-solid fa-heart nav-icon"></i></p>
-        <p className="mb-0 " onClick={()=>setSearch(search!=true)}><i className="fa-solid fa-magnifying-glass nav-icon"></i></p>
-        <p className="mb-0" onClick={()=>navigate('/cart')}><i class="fa-solid fa-cart-shopping nav-icon"></i></p>
+        <p className="mb-0 cursor-p " onClick={()=>setSearch(search!=true)}><i className="fa-solid fa-magnifying-glass nav-icon"></i></p>
+        <p className="mb-0 cursor-p" onClick={()=>navigate('/cart')}><i class="fa-solid fa-cart-shopping nav-icon"></i></p>
         <p className="mb-0 navbar-hide " onClick={()=>navigate('/login')}><button type='button' className='btn nav-login-btn bg-primary text-light'>Login</button></p>
         <p className="mb-0  ">
         <ul class="navbar-nav ms-auto navbar-hide">
