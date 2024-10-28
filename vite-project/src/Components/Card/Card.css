@@ -1,0 +1,78 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1%;
+  }
+  
+  .card-box {
+    width: 19%;
+    border: 1px solid silver;
+    border-radius: 5px;
+  }
+  
+  .card-box-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: auto;
+  }
+  
+  .card-icon-cont {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: white;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-font-icon
+  {
+    font-size: x-large;
+  }
+  .productCard-border
+{
+    padding: 2rem;
+}
+  .card-box-image-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .card-image-box {
+    height: 14rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-box-content *{
+    margin: 0;
+  }
+  .card-box-content
+  {
+    padding: 0 1rem 5px 1rem;
+  }
+
+  .productCard-category
+{   
+    color: rgb(71, 71, 71);
+    font-weight: 500;
+    font-family: monospace;
+}
+.productCard-price
+{
+    font-family: fantasy;
+}
+.productCard-cart
+{
+    font-size: larger;
+}
+  

@@ -1,18 +1,22 @@
 import React from 'react';
+import './Card.css';
+import './Responsive.css';
 
-
-function ProductCard() {
+function Card({title}) {
   return (
     <div>
       <div className="productCard-border">
-        <div className="d-flex justify-content-center">
-           <h4 className="san-font">Featured Product</h4>
-        </div>
+        <h4 className="san-font">{title}</h4>
+        <hr className="w-100 m-0" />
+        {/* <div className="d-flex justify-content-center mt-4">
+                    <p className='san-font'>Your wishlist is empty.</p>
+        </div> */}
         <div className="card-container">
 
           <div className="card-box bg-light">
             <div className="d-flex justify-content-center">
               <div className="card-box-image-container">
+                
                 <div className="card-image-box">
                   <img
                     src="https://www.westside.com/cdn/shop/files/300988900DKSAGE_1.jpg?v=1727357554&width=493"
@@ -99,4 +103,4 @@ function ProductCard() {
   );
 }
 
-export default ProductCard;
+export default Card;

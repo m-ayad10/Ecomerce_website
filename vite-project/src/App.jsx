@@ -13,6 +13,7 @@ import AdminOrders from './Pages/AdminOrders';
 import Checkout from './Pages/Checkout';
 import Address from './Pages/Address';
 import Profile from './Pages/Profile';
+import Whishlist from './Pages/Whishlist';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
      <Route path="cart" element={<Cart />} />
      <Route path="checkout" element={<Checkout />} />
      <Route path="addAddress" element={<Address />} />
+     <Route path="wishlist" element={<Whishlist />} />
      <Route path="profile" element={<Profile />} />
      <Route path="orders" element={<Orders />} />
      <Route path="/login" element={<Login />} />

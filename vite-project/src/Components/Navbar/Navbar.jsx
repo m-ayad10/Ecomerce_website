@@ -31,7 +31,7 @@ function Navbar() {
       
     </div>
     <div className="d-flex align-items-center nav-right ">
-        <p className="mb-0 navbar-hide"><i class="fa-solid fa-heart nav-icon"></i></p>
+        <p className="mb-0 navbar-hide cursor-p" onClick={()=>navigate('/wishlist')} ><i class="fa-solid fa-heart nav-icon"></i></p>
         <p className="mb-0 " onClick={()=>setSearch(search!=true)}><i className="fa-solid fa-magnifying-glass nav-icon"></i></p>
         <p className="mb-0" onClick={()=>navigate('/cart')}><i class="fa-solid fa-cart-shopping nav-icon"></i></p>
         <p className="mb-0 navbar-hide " onClick={()=>navigate('/login')}><button type='button' className='btn nav-login-btn bg-primary text-light'>Login</button></p>
