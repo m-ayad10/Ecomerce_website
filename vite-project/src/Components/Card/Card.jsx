@@ -5,8 +5,8 @@ import './Responsive.css';
 function Card({title}) {
   return (
     <div>
-      <div className="productCard-border">
-        <h4 className="san-font">{title}</h4>
+      <div className="productCard-border pt-1 mt-0">
+        <h4 className="san-font mt-0">{title}</h4>
         <hr className="w-100 m-0" />
         {/* <div className="d-flex justify-content-center mt-4">
                     <p className='san-font'>Your wishlist is empty.</p>

@@ -14,6 +14,8 @@ import Checkout from './Pages/Checkout';
 import Address from './Pages/Address';
 import Profile from './Pages/Profile';
 import Whishlist from './Pages/Whishlist';
+import Men from './Pages/Men';
+import Women from './Pages/Women';
 
 
 function App() {
@@ -27,6 +29,10 @@ function App() {
      <Route path="checkout" element={<Checkout />} />
      <Route path="addAddress" element={<Address />} />
      <Route path="wishlist" element={<Whishlist />} />
+     <Route path="men" element={<Men/>} />
+     <Route path="women" element={<Women/>} />
+
+
      <Route path="profile" element={<Profile />} />
      <Route path="orders" element={<Orders />} />
      <Route path="/login" element={<Login />} />

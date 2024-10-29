@@ -9,7 +9,7 @@ function Category() {
     <div>
       <Navbar/>
       <ProductView/>
-      <ProductCard/>
+      <ProductCard title={'Featured Collection '} />
       <BottomBar/>
 
     </div>

@@ -18,13 +18,13 @@ function Navbar() {
           <p class="nav-link active cursor-p san-font" aria-current="page"  onClick={()=>navigate('/')}>Home</p>
         </li>
         <li class="nav-item">
-          <p class="nav-link active cursor-p san-font" aria-current="page"  href="">Men</p>
+          <p class="nav-link active cursor-p san-font" aria-current="page"  onClick={()=>navigate('/men')}>Men</p>
         </li>
         <li class="nav-item">
-          <p class="nav-link active cursor-p san-font" aria-current="page"  href="">Women </p>
+          <p class="nav-link active cursor-p san-font" aria-current="page"  onClick={()=>navigate('/women')}>Women </p>
         </li>
         <li class="nav-item">
-          <p class="nav-link active cursor-p san-font" aria-current="page"  href="">Contact</p>
+          <p class="nav-link active cursor-p san-font" aria-current="page"  onClick={()=>navigate('/blog')}>Blog</p>
         </li>
         
       </ul>

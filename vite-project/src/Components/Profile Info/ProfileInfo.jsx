@@ -83,13 +83,17 @@ function ProfileInfo() {
               disabled={!isEditing}
             />
           </div>
-          <div className="col-12">
+          <div className="col-12 mt-1">
+            <p className="san-font">Change Password <span className='san-font text-danger cursor-p'>Click here</span></p>
+          </div>
+          <div className="col-12 ">
             {isEditing ? (
-              <button className="btn btn-success m-1 shadow-none" onClick={handleSave}>Save</button>
+              <button className="btn btn-success m-1 shadow-none " onClick={handleSave}>Save</button>
             ) : (
               <button className="btn  btn-outline-primary  m-1 shadow-none" onClick={toggleEdit}>Edit</button>
             )}
           </div>
+          
         </div>
       </div>
     </div>
