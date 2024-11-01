@@ -16,6 +16,7 @@ import Profile from './Pages/Profile';
 import Whishlist from './Pages/Whishlist';
 import Men from './Pages/Men';
 import Women from './Pages/Women';
+import Search from './Pages/Search';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
      <Route path="wishlist" element={<Whishlist />} />
      <Route path="men" element={<Men/>} />
      <Route path="women" element={<Women/>} />
+     <Route path="search" element={<Search/>} />
 
 
      <Route path="profile" element={<Profile />} />

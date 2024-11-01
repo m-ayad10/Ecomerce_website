@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Navbar.css'
 import {useNavigate} from 'react-router-dom'
+import { SearchQueryContext } from '../../Consonant/SearchQuery'
 function Navbar() {
   const navigate=useNavigate()
   const [search,setSearch]=useState(false)
+  const {searchQuery,setSearchQuery} =useContext(SearchQueryContext)
   
   return (
     <div>
@@ -69,7 +71,13 @@ function Navbar() {
         type="search"
         className="head-search-form"
         placeholder="Search"
-      />
+        value={searchQuery}
+        onChange={(e)=>setSearchQuery(e.target.value)}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            navigate('/search')
+          }
+        }}      />
     </div>
     <div className="icon-container d-flex align-items-center">
       <i className="fa-solid fa-xmark" onClick={()=>setSearch(false)}></i>

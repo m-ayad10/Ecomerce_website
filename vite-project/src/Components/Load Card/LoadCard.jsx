@@ -13,6 +13,8 @@ function LoadCard({ title }) {
     { name: 'Pant', category: 'shirt', price: '1500', image: 'https://cdn.shopify.com/s/files/1/0266/6276/4597/products/100001_300860160_069_1_800x.jpg?v=1630675204' },
     { name: 'Hoodies', category: 'shirt', price: '1500', image: 'https://cdn.shopify.com/s/files/1/0266/6276/4597/files/300991661WINE_1_800x.jpg?v=1729232962' },
     { name: 'Hoodies', category: 'shirt', price: '1500', image: 'https://cdn.shopify.com/s/files/1/0266/6276/4597/files/300996687OFFWHITE_1_800x.jpg?v=1729867883' },
+    { name: 'T-Shirt', category: 'shirt', price: '1500', image: 'https://cdn.shopify.com/s/files/1/0266/6276/4597/files/300951895BLACK_3_800x.jpg?v=1700645635' },
+
   ];
 
   const [isCompleted, setIsCompleted] = useState(false);
@@ -44,7 +46,9 @@ function LoadCard({ title }) {
                   <div className="card-image-box">
                     <img src={obj.image} className="card-box-image cursor-p" alt={obj.name} />
                     <div className="card-icon-cont">
-                      <i style={{ color: '#FF5A5F' }} className="fa-solid fa-heart cursor-p card-font-icon"></i>
+                    <i className="fa-regular fa-heart cursor-p card-font-icon"></i>
+
+                      {/* <i style={{ color: '#FF5A5F' }} className="fa-solid fa-heart cursor-p card-font-icon"></i> */}
                     </div>
                   </div>
                 </div>
@@ -67,6 +71,7 @@ function LoadCard({ title }) {
             </div>
           )}
       </div>
+      
       
     </div>
   );

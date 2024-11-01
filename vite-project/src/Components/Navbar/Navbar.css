@@ -6,7 +6,14 @@
   padding-top: 0.3rem; /* Reduced top padding */
   padding-bottom: 0rem; /* Reduced bottom padding */
 }
-
+.search-input
+{
+  outline: none;
+}
+.search-input:focus
+{
+  border: 2px solid black;
+}
 .nav-right
 {
     font-size: xx-large;
