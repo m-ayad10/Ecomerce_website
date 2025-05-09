@@ -1,0 +1,18 @@
+.text-overflow-profile {
+    word-wrap: break-word;
+    white-space: normal;
+}
+.position-rel
+{
+    position: relative;
+}
+.position-absol
+{
+    top: 6;
+    left: 1;
+    position: absolute;
+}
+.jjj
+{
+    border: 2px solid black;
+}

@@ -1,10 +1,14 @@
-.add-product
+.cursor-p
 {
-    padding: 1rem;
+    cursor: pointer;
 }
 .addProduct-hr
 {
     width: 100%;
+}
+.addProduct-details-name
+{
+    overflow: hidden;
 }
 .btn-primary
 {
@@ -39,11 +43,34 @@
 {
     padding: 10px;
 }
+.image-box-content p
+{
+    margin: 0;
+    padding: 0;
+}
 .addProduct-box-icon
 {
     font-size: small;
 }
+.productCard-edit-delete div
+{
+    margin: 0;
+}
+.productCard-details-admin
+{
+    margin: 0;
+    padding-bottom: 0;
+}
+.productCard-details-name
+{
+    width: 100%;
+    text-overflow: ellipsis;
 
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+             
 .addProduct-image-box div img
 {
     height: 100%;

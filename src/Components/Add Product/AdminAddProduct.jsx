@@ -1,71 +1,119 @@
-import React from 'react'
-import './AddProduct.css'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react';
+import './AddProduct.css';
+import { useNavigate } from 'react-router-dom';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../../Firebase/config'; // Make sure to import your Firestore config
+import { EditProductContext } from '../../ContextApi/EditProductContext';
 
-function AdminAddProduct({products}) {
-  const navigate=useNavigate()
+function AdminAddProduct({ products, setProducts }) { // Add setProducts to manage state
+  const navigate = useNavigate();
+  const { setEditId } = useContext(EditProductContext);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filtered, setFiltered] = useState([]);
+
+  useEffect(()=>
+  {
+    setFiltered([...products])
+  },[products])
+
+
+  const onChangeProduct = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    // Filter products based on the search query
+    if (query && query.trim() !== '') {
+      const filteredProducts = products.filter((obj) =>
+      obj.category.toLowerCase()===query.toLowerCase())
+      setFiltered(filteredProducts);
+    } else {
+      // If the searchQuery is empty or null, show all products
+      setFiltered([...products]);
+    }
+  };
+  const deleteProduct = async (id) => {
+    try {
+      const productDoc = doc(db, "Products", id);
+      await deleteDoc(productDoc);
+      console.log('Deleted Product with id:', id);
+
+      // Update products state after deletion
+      setProducts((prevProducts) => prevProducts.filter(product => product.id !== id));
+    } catch (error) {
+      console.error("Error deleting product:", error.message);
+    }
+  };
 
   return (
-    <div className=''>
-      <section className='add-product '>
+    <div className='productCard-border'>
+      <section className='add-product'>
         <h4 className='san-font'>Add Product</h4>
         <div className="d-flex justify-content-between">
           <div className='d-flex'>
-          <input type="search form-control" placeholder='Search' name="" id="" />
-          <select class="form-selec ms-2" aria-label="Default select example">
-  <option selected>All Product</option>
-  <option value="1">Shirt</option>
-  <option value="2">Pant</option>
-  <option value="3">T-Shirt</option>
-</select>
+            <input type="search" className="form-control" placeholder='Search' />
+            <select
+        className="form-select ms-2 shadow-none"
+        onChange={onChangeProduct} // Handle category change
+        aria-label="Default select example"
+      >
+        <option value="">All Products</option>
+        <option value="Shirt">Shirt</option>
+        <option value="Pant">Pant</option>
+        <option value="T-Shirt">T-Shirt</option>
+        <option value="Top">Top</option>
+        <option value="Hoodie">Hoodie</option>
+      </select>
           </div>
-          
-          
-          
-          <button type="button" class="btn btn-primary san-font" onClick={()=>navigate('/admin/createProduct')}>+ Create New</button>
-          </div>
-        <hr className='addProduct-hr' />  
-
-        <div className='addProduct-image-container'>
-          <div className='addProduct-image-box bg-light' >
-            <div >
-            <img src="https://th.bing.com/th?id=OIP.Ub6YpRIAymTwuyjRcSD92QHaIL&w=237&h=262&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="" />
-            </div>
-            <span className='image-box-content'>
-              <span>T-shirt for men</span>  <br />
-               <span className='box-content-price'><i class="fa-solid fa-indian-rupee-sign addProduct-box-icon"></i>.2000</span> <br />
-              <span className='d-flex justify-content-between'>
-                <button className='btn btn<i class="fa-solid fa-indian-rupee-sign"></i>light' type='button'><i class="fa-solid fa-pen addProduct-box-icon"  style={{color:'silver'}} ></i> Edit </button>
-                <button className='btn btn-light' type='button'><i class="fa-solid fa-trash addProduct-box-icon" style={{color:'red'}}></i> Delete </button>
-
-              </span>
-            </span>
-            
-          </div>
-          {products.map((obj)=>{
-            return(
-              <div className='addProduct-image-box bg-light' >
-            <div className='bg-light'>
-            <img src={obj.image[0].url} alt="" className='bg-light'/>
-            </div>
-            <span className='image-box-content'>
-              <span>{obj.name}</span>  <br />
-               <span className='box-content-price'><i class="fa-solid fa-indian-rupee-sign addProduct-box-icon"></i>.{obj.price} </span> <br />
-              <span className='d-flex justify-content-between'>
-                <button className='btn btn-light' type='button'><i class="fa-solid fa-pen addProduct-box-icon"  style={{color:'silver'}} ></i> Edit </button>
-                <button className='btn btn-light' type='button'><i class="fa-solid fa-trash addProduct-box-icon" style={{color:'red'}}></i> Delete </button>
-
-              </span>
-            </span>
-            
-          </div>
-            )
-          })}
-          
+          <button type="button" className="btn btn-primary san-font shadow-none" onClick={() => navigate('/admin/createProduct')}>
+            + Create New
+          </button>
         </div>
+        <hr className='addProduct-hr' />
       </section>
+      <div className='productCard-container d-flex justify-content-center'>
+      <div className="card-container ">
+            {
+                filtered.map((obj)=>
+                {
+                    return(
+                        <div className="card-box bg-light mb-2" >
+            <div className="d-flex justify-content-center">
+              <div className="card-box-image-container">
+                <div className="card-image-box">
+                  <img
+                    src={obj.imageUrls[0]?.url || ''}
+                    className="card-box-image "
+                    alt=""
+                   
+                  />
+                  
+                </div>
+              </div>
+            </div>
+            <div className="card-box-content mb-0">
+              <p className='productCard-details-name'><strong>{obj.name}</strong></p>
+              <p className="productCard-category">{obj.category}</p>
+              <p><strong> ₹ {obj.price}</strong></p>
+              
+            </div>
+            <div className='d-flex justify-content-between  '>
+                  <button className='btn btn-light shadow-none m-0' onClick={() => { setEditId(obj.id); navigate(`/admin/editProduct/${obj.id}`); }} type='button'>
+                    <i className="fa-solid fa-pen addProduct-box-icon m-0 p-0" style={{ color: 'silver' }}></i> Edit
+                  </button>
+                  <button className='btn btn-light shadow-none m-0 ' type='button' onClick={() => deleteProduct(obj.id)}>
+                    <i className="fa-solid fa-trash addProduct-box-icon m-0 p-0" style={{ color: 'red' }}></i> Delete
+                  </button>
+                </div>
+          </div>
+                    )
+                })
+            }
+
+        </div>
+        
+      </div>
     </div>
-  )
+  );
 }
 
-export default AdminAddProduct  
+export default AdminAddProduct;

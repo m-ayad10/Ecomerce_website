@@ -1,186 +1,254 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './AllOrders.css'
+import { auth, db } from '../../Firebase/config';
+import { collection, getDocs } from 'firebase/firestore';
+import { doc, updateDoc } from "firebase/firestore";
+
 function AllOrders() {
-    const product=[
-        {
-            name:'WES Casuals Grey Melange Cotton Slim Fit T-Shirt',
-            image:'https://www.westside.com/cdn/shop/files/300990200BLUE_1.jpg?v=1727940909&width=493',
-            price:2000,
-            status:'Pending',
-            date:'23-062024',
-            quantity:1,
-            size:'sm',
-            orderId:'ABC-6457325',
-            address:'Mohammed Ayad,zahara cottege,Near Mohd Haji Bus Stand Sonkal,po.Uppala 671322,Kasargod'
-        },
-        {
-            name:'WES Casuals Grey Melange Cotton Slim Fit T-Shirt',
-            image:'https://www.westside.com/cdn/shop/files/300990200BLUE_1.jpg?v=1727940909&width=493',
-            price:2000,
-            quantity:1,
-            status:'Pending',
-            date:'23-062024',
-            size:'sm',
-            orderId:'ABC-6457325',
-            address:'Mohammed Ayad,zahara cottege,Near Mohd Haji Bus Stand Sonkal,po.Uppala 671322,Kasargod'
-        },
-        {
-            name:'WES Casuals Grey Melange Cotton Slim Fit T-Shirt',
-            image:'https://www.westside.com/cdn/shop/files/300990200BLUE_1.jpg?v=1727940909&width=493',
-            price:2000,
-            quantity:1,
-            status:'Pending',
-            date:'23-062024',
-            size:'sm',
-            orderId:'ABC-6457325',
-            address:'Mohammed Ayad,zahara cottege,Near Mohd Haji Bus Stand Sonkal,po.Uppala 671322,Kasargod'
-        },
-        {
-            name:'WES Casuals Grey Melange Cotton Slim Fit T-Shirt',
-            image:'https://www.westside.com/cdn/shop/files/300990200BLUE_1.jpg?v=1727940909&width=493',
-            price:2000,
-            status:'Pending',
-            date:'23-062024',
-            quantity:1,
-            size:'sm',
-            orderId:'ABC-6457325',
-            address:'Mohammed Ayad,zahara cottege,Near Mohd Haji Bus Stand Sonkal,po.Uppala 671322,Kasargod'
-        },
-        {
-            name:'WES Casuals Grey Melange Cotton Slim Fit T-Shirt',
-            image:'https://www.westside.com/cdn/shop/files/300990200BLUE_1.jpg?v=1727940909&width=493',
-            price:2000,
-            status:'Pending',
-            date:'23-062024',
-            quantity:1,
-            size:'sm',
-            orderId:'ABC-6457325',
-            address:'Mohammed Ayad,zahara cottege,Near Mohd Haji Bus Stand Sonkal,po.Uppala 671322,Kasargod'
-        },
-    ]
+  const [product, setProduct] = useState([]);
+  const [userId, setUserId] = useState();
+  const [sortedOrder,setSortedOrder]=useState([])
+  const handleFilterChange = (e) => {
+    const selectedValue = e.target.value;
+
+    let updatedProducts = [...product];
+    if (selectedValue === 'Latest') {
+      updatedProducts.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+    } else if (selectedValue === 'Oldest') {
+      updatedProducts.sort((a, b) => a.createdAt.seconds - b.createdAt.seconds);
+    } else {
+      updatedProducts = product.filter((obj) => obj.status === selectedValue);
+      console.log(product.filter((obj) => obj.status === selectedValue));
+      
+    }
+    setSortedOrder(updatedProducts)
+  };
+
+  const handleDateChange = async (newDate, product) => {
+    try {
+      const userOrderDocRef = doc(db, "Users", product.userId, "Orders",product.orderId);
+      const globalOrderDocRef = doc(db, "Orders", product.orderId);
+
+      // Update deliveryExpected field in Firestore
+      await updateDoc(userOrderDocRef, { deliveryExpected: newDate });
+      await updateDoc(globalOrderDocRef, { deliveryExpected: newDate });
+
+      console.log(`Delivery date updated to: ${newDate} for Order ID: ${product.orderId}`);
+
+      // Update the product state in UI to reflect the change
+      setProduct((prevProducts) =>
+        prevProducts.map((item) =>
+          item.orderId === product.orderId
+            ? { ...item, deliveryExpected: newDate } // Update only the relevant order
+            : item
+        )
+      );
+      setSortedOrder((prevProducts) =>
+        prevProducts.map((item) =>
+          item.orderId === product.orderId
+            ? { ...item, deliveryExpected: newDate } // Update only the relevant order
+            : item
+        )
+      );
+    } catch (error) {
+      console.error("Error updating delivery date:", error);
+    }
+  };
+  // Fetch user ID on authentication state change
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUserId(user ? user.uid : null);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleStatusChange = async (newStatus,product) => {
+    try {
+      const userOrderDocRef = doc(db, "Users", product.userId, "Orders", product.orderId);
+      const globalOrderDocRef = doc(db, "Orders", product.orderId);
+
+      // Update status field in Firestore
+      await updateDoc(userOrderDocRef, { status: newStatus });
+      await updateDoc(globalOrderDocRef, { status: newStatus });
+
+      console.log(`Status updated to: ${newStatus} for Order ID: ${product.orderId}`);
+
+      // Update the product state in UI to reflect the status change
+      setProduct((prevProducts) =>
+        prevProducts.map((item) =>
+          item.orderId === product.orderId
+            ? { ...item, status: newStatus } // Update the relevant order's status
+            : item
+        )
+      );
+      setSortedOrder((prevProducts) =>
+        prevProducts.map((item) =>
+          item.orderId === product.orderId
+            ? { ...item, status: newStatus } // Update the relevant order's status
+            : item
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
+  // Fetch orders from Firestore
+  useEffect(() => {
+    const fetchData = async () => {
+     
+
+      try {
+        const querySnapshot = await getDocs(
+          collection(db,  "Orders")
+        );
+        const newData = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        console.log("Fetched Orders:", newData);
+        setProduct(newData);
+        
+        setSortedOrder(newData.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds))
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
+
   return (
     <div>
       <div className="myOrder-border">
-        <h2 className='order-heading'>My Orders</h2>
-        <hr className="order-border-hr"  />
+        <div className="d-flex justify-content-between m-0 p-0">
+          <h2 className='order-heading m-0 '>All Orders</h2>
+          <div>
+            <select className="form-selec m-0 p-1 "  onChange={handleFilterChange} >
+              <option value="Pending">Pending</option>
+              <option value="Ordered">Ordered</option>
+              <option value="Canceled" className='text-danger' >Canceled</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Out-of-Delivery">Out of Delivery</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Latest" selected>Latest</option>
+              <option value="Oldest">Oldest</option>
+            </select>
+          </div>
+        </div>
+        <hr className="order-border-hr" />
         <div className="myOrder-container">
-            {
-                product.map((obj)=>
-                {
-                    return(
-                        <div>
-                        <div className="myOrder-box">
-                            <div className="order-product">
-                                <div className="order-image-box">
-                                    <img src={obj.image} alt="" className='order-image' />
-                                </div>
-                                <div className='order-product-details '>
-                                <div className=" ">
-                                    <p className="order-orderId text-danger">Order Id: {obj.orderId} </p>
-                                    <p className='order-ids'><strong>User ID:</strong> ABC65788</p>
-                                    <p className='order-ids'><strong>Product ID:</strong> ABC668GH</p>
-                                    <p className='order-productName'>{obj.name} </p>
-                                    <strong><i class="fa-solid fa-indian-rupee-sign addProduct-box-icon"></i> {obj.price}</strong>
-                                    <p></p>
-                                    <div className='details-s-q'>
-                                        <p className=''>Size: {obj.size}</p>
-                                        <p>Qty: {obj.quantity}</p>
-                                    </div>
-                                    <div>
-                                    <div className='d-flex'>
-                            <label htmlFor="">Ordered Date:</label>
-                            <p className='ms-2'>23-06-2024</p>
-                        </div> 
-                            <div>
-                                <label htmlFor="">Delivery Status:</label>
-                            <select 
-                    className=" ms-2" 
-                    aria-label="Select Status"
-                  >
-                    <option value="">Select Status</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Out-of-Delivery">Out of Delivery</option>
-                    <option value="Delivered">Delivered</option>
-                  </select>
-                            </div>
-                            <div>
-                                <label htmlFor="">Delivery Expected by :</label>
-                                <input type="date" id="dateInput" class="dateInput" placeholder="Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MMYYYY" />                            </div>
-                        </div>
-                                    
-                                    <div className='deliveryDetails'>
-                                        <p><strong>Delivery Address: </strong> {obj.address}
-                                        </p>
-                                    </div>
-            
-                                </div>
-                                </div>
-                                
-                                
-            
-                            </div>
-                            
-                        </div>
-                        
-                        <hr className="w-100" />
-                        </div>
-                    )
-                })
-            }
-            <div>
-            <div className="myOrder-box">
-                <div className="order-product">
+          {sortedOrder.length > 0 ? (
+            sortedOrder.map((obj) => (
+              <div>
+                <div className="myOrder-box">
+                  {/* Order Product Container */}
+                  <div className="order-product">
+                    {/* Product Image */}
                     <div className="order-image-box">
-                        <img src="https://www.westside.com/cdn/shop/products/100001_300866680_035_2.jpg?v=1700645295&width=493" alt="" className='order-image' />
+                      <img
+                        src={obj.imageUrl || 'placeholder.jpg'}
+                        alt={obj.name || 'Product Image'}
+                        className="order-image"
+                      />
                     </div>
-                    <div className='order-product-details '>
-                    <div className=" ">
-                        <p className="order-orderId text-danger">Order Id: ABC-6457325</p>
-                        <p className='order-productName'>WES Casuals Grey Melange Cotton Slim Fit T-Shirt</p>
-                        <strong><i class="fa-solid fa-indian-rupee-sign addProduct-box-icon"></i> 9000</strong>
-                        <p></p>
-                        <div className='details-s-q'>
-                            <p className=''>Size: sm</p>
-                            <p>Qty: 2</p>
+
+                    {/* Product Details */}
+                    <div className="order-product-details">
+                      {/* Order Identifiers */}
+                      <div>
+                        <p className="order-orderId text-danger">Order ID: {obj.orderId}</p>
+                        <p className="order-ids"><strong>User ID:</strong> {obj.userId}</p>
+                        <p className="order-ids"><strong>Product ID:</strong> {obj.productId}</p>
+
+                        {/* Product Name and Price */}
+                        <p className="order-productName">{obj.name}</p>
+                        <strong>
+                          <i className="fa-solid fa-indian-rupee-sign addProduct-box-icon"></i> {obj.totalPrice}
+                        </strong>
+
+                        {/* Size and Quantity */}
+                        <div className="details-s-q">
+                          <p>Size: {obj.size || "N/A"}</p>
+                          <p>Qty: {obj.qty || "N/A"}</p>
                         </div>
+
+                        {/* Delivery Details */}
                         <div>
-                            <div>
-                                <label htmlFor="">Delivery Status:</label>
-                            <select 
-                    className=" ms-2" 
-                    aria-label="Select Status"
-                  >
-                    <option value="">Select Status</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Out-of-Delivery">Out of Delivery</option>
-                    <option value="Delivered">Delivered</option>
-                  </select>
-                            </div>
-                            <div>
-                                <label htmlFor="">Delivery Expected by :</label>
-                                <input type="date" className='ms-2' />
-                            </div>
-                        </div>
-                         
-                        <div className='deliveryDetails'>
-                            <p><strong>Delivery Address: </strong> Mohammed Ayad,zahara cottege,Near Mohd Haji Bus Stand Sonkal,po.Uppala 671322,Kasargod
+                          {/* Ordered Date */}
+                          <div className="d-flex">
+                            <label htmlFor="">Ordered Date:</label>
+                            <p className="m">
+                              {obj.createdAt ? new Date(obj.createdAt.toDate()).toLocaleDateString() : "N/A"}
                             </p>
+                          </div>
+
+                          {/* Delivery Status */}
+                          <div className="d-flex align-items-center ">
+                            <label htmlFor="">Delivery Status:</label>
+                            <select
+                              className=""
+                              aria-label="Select Status"
+                              value={obj.status}
+                              disabled={obj.status === 'Canceled'}
+                              onChange={(e) => handleStatusChange(e.target.value, obj)}
+                            >
+                              <option value="Pending">Pending</option>
+                              <option value="Ordered">Ordered</option>
+                              <option value="Canceled" className='text-danger' >Canceled</option>
+                              <option value="Shipped">Shipped</option>
+                              <option value="Out-of-Delivery">Out of Delivery</option>
+                              <option value="Delivered">Delivered</option>
+                            </select>
+                          </div>
+
+                          {/* Expected Delivery Date */}
+                          <div>
+                            <label htmlFor="">Delivery Expected by:</label>
+                            <input
+                              type="date"
+                              id="dateInput"
+                              className="dateInput"
+                              value={
+                                obj.deliveryExpected && !isNaN(new Date(obj.deliveryExpected).getTime())
+                                  ? new Date(obj.deliveryExpected).toISOString().split('T')[0]
+                                  : ''  // Empty string for invalid date
+                              }
+                              onChange={(e) => handleDateChange(e.target.value, obj)} // Trigger date change
+                            />
+                          </div>
+
+
+                          <div className="deliveryDetails ">
+                            <p>
+                              <strong>Delivery Address:</strong> {obj.deliveryAddress || "N/A"}
+                            </p>
+                          </div>
                         </div>
-                        <a href="" className='text-danger details-cancel'>Cancel Order</a>
+                      </div>
+
+                      {/* Delivery Address */}
 
                     </div>
-
-                    </div>
-                    
-                    
-
+                  </div>
                 </div>
-                
+
+                {/* Divider */}
+                <hr className="w-100" />
+              </div>
+
+            ))
+          ) : (
+            <div className="d-flex justify-content-center">
+              <p>No Orders Found</p>
             </div>
-            
-            <hr className="w-100" />
-            </div>
-            
+          )}
+
+
+
 
         </div>
       </div>

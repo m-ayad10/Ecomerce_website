@@ -4,7 +4,10 @@
     font-weight: 400;
 }
 
-
+.custom-swal-popup .swal2-icon {
+  font-size: 20px; /* Decrease the icon size */
+  margin-top: 10px; /* Adjust the margin-top to decrease space between the icon and title */
+}
 /* From Uiverse.io by BlackisPlay */ 
 .dateInput {
     margin-left: auto;

@@ -1,0 +1,38 @@
+.checkout-border
+{
+    padding: 2rem;
+}
+.check-header-hr
+{
+    margin: 0;
+}
+.shipping-detail-name
+{
+    font-family: monospace;
+    color: rgb(112 109 109);
+}
+.shipping-detail-cont p
+{
+    margin: 0;
+}
+.shipping-address-box
+{
+    display: flex;
+    gap: 1.5rem;
+    margin: 8px;
+}
+.shipping-address-box div p
+{
+    margin: 0;
+}
+.shipping-address-cont
+{
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.order-summary
+{
+    font-family: sans-serif;
+    font-weight: 600;
+}

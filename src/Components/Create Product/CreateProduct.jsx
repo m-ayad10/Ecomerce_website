@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import './CreateProduct.css';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { db, storage } from '../../Firebase/config';
+import { addDoc, collection } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 function CreateProduct() {
+  const navigate=useNavigate()
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [gender, setGender] = useState('');
@@ -10,19 +15,48 @@ function CreateProduct() {
   const [stock, setStock] = useState();
   const [images, setImages] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null); // Track hovered image index
+  const [loading,setLoading]=useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log({
+    setLoading(true)
+
+    try {
+      const imageUrls=[]
+      for(let file of images)
+      {
+        const storageRef = ref(storage, `products/${file.name}`);
+        await uploadBytes(storageRef,file)
+        const downloadUrl=await getDownloadURL(storageRef)
+        await imageUrls.push({url:downloadUrl})
+      }
+      console.log(imageUrls);
+      
+      await addDoc(collection(db,'Products'),
+    {
       name,
       description,
       gender,
       category,
-      price,
-      stock,
-      images
-    });
+      price: Number(price),
+      stock: Number(stock),
+      imageUrls, // Store array of image URLs
+      createdAt: new Date(),
+    })
+    navigate('/admin/addProduct')
+    // Reset form
+    setName('');
+    setDescription('');
+    setGender('');
+    setCategory('');
+    setPrice(0);
+    setStock(1);
+    setImages([]);
+    } catch (error) {
+      console.error('Error uploading product',error);          
+    }finally{
+      setLoading(false)
+    }
   };
 
   const handleImageChange = (e) => {
@@ -80,7 +114,7 @@ function CreateProduct() {
                 <div>
                   <p>Gender</p>
                   <select 
-                    className="form-select ms-2" 
+                    className="form-select ms-2 shadow-none " 
                     value={gender} 
                     onChange={(e) => setGender(e.target.value)} 
                     aria-label="Select Gender"
@@ -93,7 +127,7 @@ function CreateProduct() {
                 <div className='ps-3'>
                   <p>Category</p>
                   <select 
-                    className="form-select ms-2" 
+                    className="form-select ms-2 shadow-none" 
                     value={category} 
                     onChange={(e) => setCategory(e.target.value)} 
                     aria-label="Select Category"
@@ -102,6 +136,8 @@ function CreateProduct() {
                     <option value="Shirt">Shirt</option>
                     <option value="Pant">Pant</option>
                     <option value="T-shirt">T-shirt</option>
+                    <option value="Top">Top</option>
+                    <option value="Hoodie">Hoodie</option>
                   </select>
                 </div>
               </div>
@@ -172,7 +208,11 @@ function CreateProduct() {
                 </div>
                 
               </div>
-              <button type="submit" className="btn form-submit">Submit</button>
+              {loading?(
+                              <button type="submit" className="btn form-submit shadow-none" >Submiting...</button>
+              ):(
+                              <button type="submit" className="btn form-submit shadow-none" onClick={()=>handleSubmit}>Submit</button>
+              )}
             </form>
           </div>
         </div>

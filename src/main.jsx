@@ -5,12 +5,19 @@ import { register  } from 'swiper/element/bundle';
 
 import { BrowserRouter } from "react-router-dom";
 import './index.css'
+import { SearchQueryProvider } from './Consonant/SearchQuery.jsx';
+import { EditProductProvider } from './ContextApi/EditProductContext.jsx';
 register()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-       <App />
+    <SearchQueryProvider>
+      <EditProductProvider>
+      <App />
+      </EditProductProvider>
+
+    </SearchQueryProvider>
     </BrowserRouter>
   </StrictMode>,
 )

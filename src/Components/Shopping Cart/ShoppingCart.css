@@ -49,7 +49,7 @@
 }
 .cart-product-container
 {
-    height: 30rem;
+    max-height: 30rem;
     overflow-y: scroll;
 }
 
