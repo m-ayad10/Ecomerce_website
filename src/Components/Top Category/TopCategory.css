@@ -1,0 +1,122 @@
+.topCategory-container
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.topCategory-box
+{
+    width: 20%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 18rem;
+}
+
+
+
+@media only screen and (max-width: 400px) {
+    .topCategory-container
+{
+    gap: 2%;
+}
+    .topCategory-box
+{
+    width: 48%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 11rem;
+}
+
+}
+
+@media only screen and (min-width: 400px) and (max-width: 480px) {
+    .topCategory-container
+{
+    gap: 0.3%;
+}
+    .topCategory-box
+{
+    width: 33%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 10rem;
+}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+    .topCategory-container
+{
+    gap: 0.3%;
+}
+    .topCategory-box
+{
+    width: 33%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 12rem;
+}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+    .topCategory-container
+{
+    gap: 0%;
+}
+    .topCategory-box
+{
+    width: 33.3%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 14rem;
+}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1024px) {
+    .topCategory-container
+{
+    gap: 2%;
+}
+    .topCategory-box
+{
+    width: 23%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 14.5rem;
+}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    
+    .topCategory-box
+{
+    width: 19%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 15rem;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+    .topCategory-box
+{
+    width: 20%;
+}
+.topCategory-image
+{
+    width: auto;
+    height: 17rem;
+}
+}

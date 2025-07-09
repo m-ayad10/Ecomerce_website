@@ -1,0 +1,86 @@
+.cursor-p
+{
+    cursor: pointer;
+}
+.addProduct-hr
+{
+    width: 100%;
+}
+.addProduct-details-name
+{
+    overflow: hidden;
+}
+.btn-primary
+{
+    text-wrap: wrap;
+    max-width: 100%;
+}
+.addProduct-image-container
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+}
+.addProduct-image-box
+{
+    margin-top: 1rem;
+    height: 18rem;
+    width: 19%;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+.addProduct-image-box div
+{
+    width: 100%;
+    height:70%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+.image-box-content, .box-content-price
+{
+    padding: 10px;
+}
+.image-box-content p
+{
+    margin: 0;
+    padding: 0;
+}
+.addProduct-box-icon
+{
+    font-size: small;
+}
+.productCard-edit-delete div
+{
+    margin: 0;
+}
+.productCard-details-admin
+{
+    margin: 0;
+    padding-bottom: 0;
+}
+.productCard-details-name
+{
+    width: 100%;
+    text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+             
+.addProduct-image-box div img
+{
+    height: 100%;
+    max-width: 100%;
+}
+.form-selec
+{
+    border-radius: 3px;
+}
+.form-selec:focus
+{
+    outline: none;
+}
