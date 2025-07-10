@@ -1,8 +1,26 @@
-# React + Vite
+# 🛍️ E-commerce Fashion Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and feature-rich fashion e-commerce website built using **React** and **Firebase**, allowing users to browse products, manage their cart and wishlist, place orders, and more. The admin dashboard supports product and order management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+
+- ✅ Product listing with category filters (Men, Women, etc.)
+- 🔍 Search functionality
+- 🛒 Cart and Wishlist management
+- 💳 Secure Checkout with payment integration
+- 📦 Order placement and tracking
+- 👤 User authentication and profile management
+- 🛠️ Admin dashboard for managing products and orders
+- 📱 Fully responsive design for mobile and desktop
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, JavaScript, HTML, CSS, Bootstrap
+- **Backend/Services**: Firebase (Authentication, Firestore, Storage)
+- **API**: REST APIs
+
+
